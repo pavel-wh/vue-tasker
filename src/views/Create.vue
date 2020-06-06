@@ -1,6 +1,7 @@
-/* eslint-disable prettier/prettier */
 <template>
-	<div class="home"></div>
+	<div class="home">
+		Created
+	</div>
 </template>
  
 <script>
