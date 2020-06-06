@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Create from '../views/Create.vue'
 
 Vue.use(VueRouter)
 
@@ -8,24 +7,21 @@ const routes = [
 	{
 		path: '/',
 		name: 'Create',
-		component: Create,
+		// route level code-splitting
+		// this generates a separate chunk (about.[hash].js) for this route
+		// which is lazy-loaded when the route is visited.
+		component: () => import(/* webpackChunkName: "Create" */ '@/views/Create.vue'),
 	},
 	{
 		path: '/list',
 		name: 'List',
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
-		component: () => import(/* webpackChunkName: "about" */ '@/views/List.vue'),
+		component: () => import(/* webpackChunkName: "List" */ '@/views/List.vue'),
 	},
 	{
 		path: '/list/:id',
 		name: 'Detail',
-		// route level code-splitting
-		// this generates a separate chunk (about.[hash].js) for this route
-		// which is lazy-loaded when the route is visited.
 		component: () =>
-			import(/* webpackChunkName: "about" */ '@/views/Detail.vue'),
+			import(/* webpackChunkName: "Detail" */ '@/views/Detail.vue'),
 	},
 ]
 
