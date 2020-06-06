@@ -19,7 +19,7 @@
 					<td class="description">{{task.description}}</td>
 					<td>{{task.status}}</td>
 					<td>
-						<router-link tag="button" class="btn btn-small" :to="`/task/${task.id}`">Open</router-link>
+						<router-link tag="button" class="btn btn-small" :to="`/list/${task.id}`">Open</router-link>
 					</td>
 				</tr>
 			</tbody>
