@@ -39,7 +39,6 @@ export default {
 
 <style scoped>
 .description {
-	display: block;
 	max-width: 400px;
 	white-space: nowrap;
 	text-overflow: ellipsis;

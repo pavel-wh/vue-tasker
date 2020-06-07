@@ -1,6 +1,6 @@
 <template>
 	<div class="row">
-		<div class="col s6 offset-s3">
+		<div class="col s8 offset-s2">
 			<h1>Create task</h1>
 			<form @submit.prevent="createTask">
 				<div class="input-field">
@@ -16,7 +16,7 @@
 					<label for="description">Description</label>
 				</div>
 				<div class="input-field">
-					<input type="text" id="deadline" ref="datepicker">
+					<input type="text" id="deadline" ref="datepicker" v-model="date">
 					<label for="description">Deadline</label>
 				</div>
 				<button class="waves-effect waves-light btn" type="submit">Create Task</button>
@@ -32,13 +32,12 @@ export default {
 	name: 'Create',
 	data() {
 		return {
-			description: '',
 			title: '',
 			cheaps: null,
+			description: '',
 			date: null
 		}
 	},
-	components: {},
 	mounted() {
 
 		const textNeedCount = document.querySelector('#description')

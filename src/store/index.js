@@ -8,9 +8,8 @@ export default new Vuex.Store({
 		tasks: JSON.parse(localStorage.getItem('tasks') || '[]'),
 	},
 	getters: {
-		tasks(state) {
-			return state.tasks
-		},
+		tasks: (state) => state.tasks,
+		taskByID: (store) => (id) => store.tasks.find((task) => task.id === id),
 	},
 	mutations: {
 		initialStore(state) {
@@ -24,10 +23,36 @@ export default new Vuex.Store({
 
 			localStorage.setItem('tasks', JSON.stringify(state.tasks))
 		},
+		updateTask(state, updateTask) {
+			const tasks = state.tasks.concat()
+
+			const index = tasks.findIndex((t) => t.id === updateTask.id)
+
+			const task = tasks[index]
+
+			const status =
+				new Date(updateTask.date) > new Date() ? 'active' : 'outdated'
+
+			tasks[index] = { ...updateTask, ...task, status }
+
+			state.tasks = tasks
+
+			localStorage.setItem('tasks', JSON.stringify(state.tasks))
+		},
+		completeTask(state, id) {
+			const index = state.tasks.findIndex((task) => task.id === id)
+			state.tasks[index].status = 'completed'
+		},
 	},
 	actions: {
 		createTask({ commit }, task) {
 			commit('createTask', task)
+		},
+		updateTask({ commit }, task) {
+			commit('updateTask', task)
+		},
+		completeTask({ commit }, id) {
+			commit('completeTask', id)
 		},
 	},
 	modules: {},
