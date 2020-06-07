@@ -1,7 +1,8 @@
 <template>
 	<div class="row">
 		<div class="task col s8 offset-s2" v-if="task">
-			<h1>Edit task</h1>
+			<h1 v-if="task.status !== 'completed'">Edit task</h1>
+			<h1 v-else>Completed!</h1>
 			<form @submit.prevent="updateTask">
 				<div class="input-field">
 					<input type="text" name="title" id="title" class="validate" required v-model="title">

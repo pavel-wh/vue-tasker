@@ -41,7 +41,10 @@ export default new Vuex.Store({
 		},
 		completeTask(state, id) {
 			const index = state.tasks.findIndex((task) => task.id === id)
+
 			state.tasks[index].status = 'completed'
+
+			localStorage.setItem('tasks', JSON.stringify(state.tasks))
 		},
 	},
 	actions: {
